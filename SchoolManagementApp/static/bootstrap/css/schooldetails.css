@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Aldrich&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+:root{
+  --primary_color:rgb(142, 16, 119);
+  --secondary_color:rgb(204, 88, 183);
+  --dark_color:rgb(93, 11, 78);
+  --text_color:#fff;
+  --black_color:black;
+  --optional_color:blueviolet;
+}
+body{
+    margin: 0;
+    padding: 0;
+    font-family: "Aldrich", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+.container-fluid{
+    background-color: var(--secondary_color);
+    height: 100vh;
+}
+.row{
+    background-color: #fff;
+    height: 100vh;
+}
+.form-control {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--bs-body-color);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: var(--bs-body-bg);
+    background-clip: padding-box;
+    border: 2px solid black;
+    border-radius: var(--bs-border-radius);
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+label{
+    color:rgb(71, 17, 75);
+}
+.mb-3 button{
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 10px;
+    color:rgb(71, 17, 75);
+    background: linear-gradient(0deg,rgb(71, 17, 75),#fff,rgb(71, 17, 75));
+}
+button:hover{
+    background: linear-gradient(0deg, rgba(224, 161, 161, 0.308),var(--secondary_color),rgb(77, 77, 194));
+}
+
+.wrapper{
+    height: fit-content;
+    background-color: #fff;
+    flex-direction: column;
+}
+.heading{
+    height: 100px;
+    color:rgb(138, 17, 138);
+}

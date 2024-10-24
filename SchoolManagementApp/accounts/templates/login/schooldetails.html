@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCHOOL DETAILS</title>
+    <link rel="stylesheet" href="{% static '/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static '/bootstrap/css/schooldetails.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center align-items-center wrapper">
+                <div class="col-12 head d-flex justify-content-center align-items-center heading">
+                    <h1>School Details</h1>
+                </div>
+                <div class="col-12 d-flex justify-content-center align-items-center">
+                    <div class="col-3" style="height: fit-content;">
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="schoolcode" class="form-label">School Code</label>
+                                <input type="number" class="form-control" id="schoolcode" aria-describedby="firstnameHelp"> 
+                            </div>
+                            <div class="mb-3">
+                                <label for="schoolname" class="form-label">School Name</label>
+                                <input type="text" class="form-control" id="schoolname">
+                            </div>
+                            <div class="mb-3">
+                                <label for="schooltype" class="form-label">School Type</label>
+                                <input type="text" class="form-control" id="schooltype" aria-describedby="firstnameHelp"> 
+                            </div>
+                            <div class="mb-3">
+                                <label for="address" class="form-label">Address</label>
+                                <input type="text" class="form-control" id="address" aria-describedby="firstnameHelp"> 
+                            </div>
+                            <div class="mb-3">
+                                <label for="principalname" class="form-label">School Principal</label>
+                                <input type="text" class="form-control" id="principalname">
+                            </div>
+                            <div class="mb-3">
+                                <label for="location" class="form-label">Address</label>
+                                <input type="text" class="form-control" id="location" aria-describedby="firstnameHelp"> 
+                            </div>
+                            <div class="mb-3">
+                                <label for="tel" class="form-label">Tel</label>
+                                <input type="number" class="form-control" id="tel" aria-describedby="firstnameHelp"> 
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email">
+                            </div>
+                            <div class="mb-3">
+                                <label for="logo" class="form-label">School Logo</label>
+                                <input type="file" class="form-control" id="logo" aria-describedby="firstnameHelp"> 
+                            </div>
+                            <div class="mb-3">
+                                <label for="Image" class="form-label">School Image</label>
+                                <input type="file" class="form-control" id="Image" aria-describedby="firstnameHelp"> 
+                            </div>
+                            <div class="mb-3">
+                                <label for="staff" class="form-label">Total Staff</label>
+                                <input type="number" class="form-control" id="staff" aria-describedby="firstnameHelp"> 
+                            </div>
+                            <div class="mb-3">
+                                <label for="tstudent" class="form-label">Total Student</label>
+                                <input type="number" class="form-control" id="tstudent" aria-describedby="firstnameHelp"> 
+                            </div>
+                            <div class="mb-3">
+                                <label for="fee" class="form-label">Total School Fee</label>
+                                <input type="number" class="form-control" id="fee" aria-describedby="firstnameHelp"> 
+                            </div>
+                            <div class="mb-3 d-flex justify-content-center align-items-center">
+                                <button type="submit">Submit</button>
+                            </div>
+                            
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>        
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="{% static '/bootstrap/js/bootstrap.js' %}"></script>
+    <script src="{% static '/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static '/bootstrap/js/schooldetails.js' %}"></script>
+    <script src="https://kit.fontawesome.com/648d5aac71.js" crossorigin="anonymous"></script>
+    
+</body>
+</html>

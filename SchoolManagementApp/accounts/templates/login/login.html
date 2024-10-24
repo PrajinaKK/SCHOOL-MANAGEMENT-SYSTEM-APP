@@ -1,0 +1,285 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Management System</title>
+    <link rel="stylesheet" href="{% static '/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static '/bootstrap/css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+    <style>
+      .phone{
+          background: url("{% static '/bootstrap/img/login2-removebg-preview.png' %}");
+          background-size: contain;   
+      }
+      .form-select{
+        border:2px solid black;
+      }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-7 d-flex justify-content-center align-items-center">
+                
+                <div class="phone d-flex justify-content-center align-items-center">
+                   
+                   <div class="phone-wrapper d-flex justify-content-center align-items-center" style="flex-direction: column;">
+                    
+                    
+                    <img src="{% static '/bootstrap/img/school.png' %}">
+                    <!-- <h2>MIRACLE</h2> -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Login</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalFullscreen">Create an account</button>
+                    
+
+                    </div> 
+                    
+
+                </div>
+            </div>
+            <div class="col-5" style="background-color: blueviolet;">
+            <!--Sign up modal-->
+            </div>
+            <div class="modal fade" id="exampleModalFullscreen" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" aria-modal="true" role="dialog">
+                <div class="modal-dialog modal-fullscreen">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <!-- <div class="line"></div> -->
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-12 logo d-flex justify-content-center align-items-center">
+                            <img src="{% static '/bootstrap/img/school.png' %}">
+                            <h2>Sign Up</h2>
+                        </div>
+                        <div class="col-12 form-content">
+                          <form action="" method="post">
+                            {% csrf_token %}
+                            <div class="col-12 d-flex justify-content-center align-items-center iam">
+                              <h5> I am</h5>
+                            </div>
+                            <div class="col-12 d-flex justify-content-center align-items-center roles">
+                              {% for i in form.roles %}
+                              <div class="radio-circle d-flex justify-content-center align-items-center">
+                                <i class="fa-solid fa-key"></i>
+                                <div class="form-check form-check-inline">
+                                  {{i}}
+                                  <!-- <input class="form-check-input radio" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> -->
+                                  <!-- <label class="form-check-label" for="inlineRadio1">Admin</label> -->
+                                </div>
+                              </div>  
+                              {% endfor %}
+                              <!-- <div class="radio-circle d-flex justify-content-center align-items-center">
+                                <i class="fa-solid fa-key"></i>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input radio" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                  <label class="form-check-label" for="inlineRadio1">Admin</label>
+                                </div>
+                              </div>   -->
+                              <!-- <div class="radio-circle d-flex justify-content-center align-items-center">
+                                <i class="fa-solid fa-users"></i>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input radio" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                  <label class="form-check-label" for="inlineRadio2">Staff</label>
+                                </div>
+                              </div> -->
+                              <!-- <div class="radio-circle d-flex justify-content-center align-items-center">
+                                <i class="fa-solid fa-book"></i>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input radio" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option2">
+                                  <label class="form-check-label" for="inlineRadio3">Librarian</label>
+                                </div>
+                              </div>   -->
+                              
+                            </div>
+                            <div class="col-12 personal-info d-flex justify-content-center align-items-center">
+                              <div class="col-6 left-form">
+                                <div class="mb-3">
+                                  <label for="firstname" class="form-label">First Name</label>
+                                  {{form.first_name}}
+                                  <!-- <div id="firstnameHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                                </div>
+                                <!-- <div class="mb-3">
+                                  <label for="username" class="form-label">Username</label>
+                                  <input type="text" class="form-control" id="username" aria-describedby="firstnameHelp">
+                                </div> -->
+                                <div class="mb-3">
+                                  <label for="age" class="form-label">Age</label>
+                                  <!-- <input type="number" class="form-control" id="age" aria-describedby="firstnameHelp"> -->
+                                  {{form.age}}
+                                </div>
+                                <div class="mb-3">
+                                  <label for="email" class="form-label">Email</label>
+                                  <!-- <input type="email" class="form-control" id="email" aria-describedby="firstnameHelp">  -->
+                                  {{form.email}}
+                                </div>
+                                <div class="mb-3">
+                                  <label for="dob" class="form-label">DOB</label>
+                                  <!-- <input type="date" class="form-control" id="dob"> -->
+                                  {{form.DOB}}
+                                </div>
+                                <div class="mb-3">
+                                  <label for="location" class="form-label">Address</label>
+                                  <!-- <input type="text" class="form-control" id="location" aria-describedby="firstnameHelp">  -->
+                                  {{form.Address}}
+                                </div>
+                               
+    
+                                
+                              </div>
+                              <div class="col-6 right-form">
+                                <div class="mb-3">
+                                  <label for="lastname" class="form-label">Last Name</label>
+                                  <!-- <input type="text" class="form-control" id="lastname" aria-describedby="firstnameHelp"> -->
+                                  {{form.last_name}}
+                                </div>
+                                <div class="mb-3">
+                                  <label for="phonenumber" class="form-label">Phone Number</label>
+                                  <!-- <input type="number" class="form-control" id="phonenumber" aria-describedby="firstnameHelp"> -->
+                                  {{form.phone_number}}
+                                </div>
+                              
+                                <!-- <div class="mb-3">
+                                  <label for="location" class="form-label">Location</label>
+                                  <input type="text" class="form-control" id="location" aria-describedby="firstnameHelp"> 
+                                </div> -->
+                                <div class="mb-3">
+                                  <label for="Gender" class="form-label">Gender</label>
+                                  <!-- <input type="date" class="form-control" id="Gender"> -->
+                                  {{form.gender}}
+                                </div>
+                                
+                                <div class="mb-3">
+                                  <label for="exampleInputPassword1" class="form-label">Password</label>
+                                  <!-- <input type="password" class="form-control" id="exampleInputPassword1"> -->
+                                  {{form.password}}
+                                </div>
+                                
+                                
+                                <div class="mb-3">
+                                  <label for="Confirm" class="form-label">Confirm Password</label>
+                                  <!-- <input type="password" class="form-control" id="Confirm"> -->
+                                  {{form.confirm_password}}
+                                  <input type="text" name="sign-up" class="d-none">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-12 d-flex justify-content-center align-items-center sign-up-btn">
+                              <button type="submit">Sign Up</button>
+                            </div>
+                            
+                            
+                            
+
+
+                          </form>
+
+                        </div>
+                       
+                        
+                        
+                    
+                    </div>
+                    <div class="modal-footer">
+                      <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                       @miracle.com 
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <!--Sign up modal-->
+
+            <!--login modal-->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="staticBackdropLabel" style="color:rgb(124, 24, 101)">Login</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="" method="post" id="login">
+                      {% csrf_token %}
+                      <div class="modal-body d-flex justify-content-center align-items-center" style="flex-direction: column;padding-top: 30px;">
+                        
+                          
+                        <div class="mb-3">
+                          
+                          <label for="email" class="form-label">Email</label>
+                          <div class="login-icon d-flex justify-content-center align-items-center" style="height: 50px;width: 100%;flex-direction: row;gap:6px;">
+                            <div class="log-icon d-flex justify-content-center align-items-center" style="width: 50px;height: 40px;border-radius: 5px;border:2px solid black;font-size: 25px;">
+                              <!-- <i class="fa-regular fa-user"></i> -->
+                              <i class="fa-solid fa-at"></i>
+                              <!-- <i class="fa-solid fa-user"></i> -->
+                            </div>
+                            
+                            {{login_form.email}}
+                          </div>
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputPassword1" class="form-label">Password</label>
+                          <div class="login-icon d-flex justify-content-center align-items-center" style="height: 50px;width: 100%;flex-direction: row;gap:6px;">
+                            <div class="log-icon d-flex justify-content-center align-items-center" style="width: 50px;height: 40px;border-radius: 5px;border:2px solid black;font-size: 25px;">
+                              <i class="fa-solid fa-lock"></i>
+                              
+                            </div>
+                            
+                            {{login_form.password}}
+                            <input type="text" name="login" class="d-none">
+                          </div>
+                        </div>
+                        <!-- <div class="col-12 d-flex justify-content-center align-items-center sign-up-btn"> -->
+                          <button type="submit" class="login-btn" name="miracle">Login</button>
+                        <!-- </div> -->
+                       
+                      </div>
+                    </form>  
+                    <div class="modal-footer">
+                      @miracle.com
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <!--login modal-->
+        </div>
+
+    </div>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="{% static '/bootstrap/js/bootstrap.js' %}"></script>
+    <script src="{% static '/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static '/bootstrap/js/script.js' %}"></script>
+    <script src="https://kit.fontawesome.com/648d5aac71.js" crossorigin="anonymous"></script>
+    <script>
+          document.getElementById('login').onsubmit = function(e) {
+          e.preventDefault(); // Prevent default form submission to stay on the page
+          var form = this;
+
+          fetch("", { 
+              method: "POST",
+              body: new FormData(form),
+              headers: {
+                  'X-Requested-With': 'XMLHttpRequest'
+              }
+          });
+          };
+    </script>
+
+    
+</body>
+</html>

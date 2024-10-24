@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Aldrich&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+:root{
+  --primary_color:rgb(142, 16, 119);
+  --secondary_color:rgb(204, 88, 183);
+  --dark_color:rgb(93, 11, 78);
+  --text_color:#fff;
+  --black_color:black;
+  --optional_color:blueviolet;
+}
+body{
+    margin: 0;
+    padding: 0;
+    font-family: "Aldrich", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+.container-fluid{
+    background-color: var(--secondary_color);
+    height: 100vh;
+}
+.row{
+    background-color: #fff;
+    height: 100vh;
+}
+.col-7{
+    flex-direction: column;
+}
+.phone{
+    height: 600px;
+    width: 400px;
+    position: absolute;
+    background: url("{% staic '/bootstrap/img/login2-removebg-preview.png' %}");
+    background-size: contain;
+    
+}
+/* .phone-img{
+    height: 600px;
+    width: 400px;
+    position: absolute;
+    background-color:transparent;
+} */
+.phone-wrapper{
+    height: 400px;
+    width: 240px;
+    background-color: #fff;
+    position: relative;
+    gap: 10px;
+}
+.modal-fullscreen .modal-content {
+    height: 100%;
+    border: 0;
+    border-radius: 2px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    width: 99%;
+}
+
+.modal-header {
+   
+    border-bottom: 0;
+    padding-bottom: 0;
+   
+}
+.line{
+    width:400px;
+    height: 5px;
+    background-color: rgba(0, 0, 0, 0.23);
+    border-radius: 10px;
+    margin: calc(-.5* var(--bs-modal-header-padding-y)) calc(-.5* var(--bs-modal-header-padding-x)) calc(-.5* var(--bs-modal-header-padding-y)) auto;
+}
+.modal-footer {
+    border-top: var(--bs-modal-footer-border-width) solid var(--bs-modal-footer-border-color);
+    color:var(--dark_color);
+}
+.modal-body {
+    position: relative;
+    flex: 1 1 auto;
+    padding: var(--bs-modal-padding);
+    gap: 10px;
+    padding-top: 0;
+}
+.logo{
+    height: 80px;
+    flex-direction: row;
+}
+.logo img{
+    width: 110px;
+    height: 90px;
+}
+.logo h2{
+    color:var(--dark_color);
+}
+.form-content{
+    /* background-color: rgb(173, 93, 161); */
+    height: fit-content;
+}
+.iam{
+    height: 70px;
+    padding-top:40px;
+    /* background-color: aqua; */
+} 
+.roles{
+    height: 110px;
+    /* background-color: aquamarine; */
+    padding-top:5px;
+    flex-direction: row;
+    gap: 20px;
+}
+input[type=radio]{
+    opacity: 0;
+}
+.radio-circle{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: var(--text_color);
+    flex-direction: column;
+    border: 1px solid black;
+    cursor: pointer;
+} 
+/*background-color: #c07f7f;*/
+.form-check {
+    position: relative;
+    margin-left: -10px;
+}
+.personal-info{
+    flex-direction: row;
+    height: fit-content;
+    /* background-color: #b05b5b; */
+    gap:10px;
+}
+.radio-circle.selected{
+    background-color: rgb(61, 111, 198);
+    color:white;
+    border: none;
+}
+.radio-circle i{
+    position: relative;
+    
+    font-size: 35px;
+}
+.form-control {
+   
+    width:100%;/*160*/
+   
+    border: 2px solid black;
+   
+}
+.col-12 button{
+    border: none;
+    outline: none;
+    padding: 15px;
+    background: linear-gradient(0deg, rgba(224, 161, 161, 0.308),var(--secondary_color),rgb(77, 77, 194));
+    border-radius: 20px;
+    color:var(--dark_color)
+}
+.sign-up-btn{
+    height: 40px;
+    padding: 30px;
+}
+.left-form{
+    height: 100%;
+    padding: 40px 100px 40px 100px;
+}
+.right-form{
+    height: 100%;
+    padding: 40px 100px 40px 100px;
+}
+.login-btn{
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    background: linear-gradient(0deg,rgb(30, 57, 178),var(--secondary_color),rgb(208, 61, 61)) ;
+    width: 100px;
+}
+.btn-primary {
+    --bs-btn-color: #fff;
+    background: blueviolet;
+    --bs-btn-border-color: #0d6efd;
+    border: none;
+    
+}
+.btn-primary:hover {
+    background: linear-gradient(0deg,rgb(30, 57, 178),var(--secondary_color),rgb(208, 61, 61));
+    
+}
+
+@media screen and (max-width:1000px){
+    .left-form{
+        height: 100%;
+        padding: 0px 30px 0px 30px;
+    }
+    .right-form{
+        height: 100%;
+        padding: 0px 30px 0px 30px;
+    }
+
+}

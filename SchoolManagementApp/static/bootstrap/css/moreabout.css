@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Aldrich&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+:root{
+  --primary_color:rgb(142, 16, 119);
+  --secondary_color:rgb(204, 88, 183);
+  --dark_color:rgb(93, 11, 78);
+  --text_color:#fff;
+  --black_color:black;
+  --optional_color:blueviolet;
+}
+body{
+    margin: 0;
+    padding: 0;
+    font-family: "Aldrich", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+.container-fluid{
+    background-color: var(--secondary_color);
+    height: 100vh;
+}
+.row{
+    background-color: #fff;
+    height: 100vh;
+}
+.form-content{
+    /* background-color: rgb(173, 93, 161); */
+    height: fit-content;
+}
+.personal-info{
+    flex-direction: row;
+    height: fit-content;
+    /* background-color: #b05b5b; */
+    gap:10px;
+}
+.left-form{
+    height: 100%;
+    padding: 40px 150px 40px 150px;
+}
+.right-form{
+    height: 100%;
+    padding: 40px 150px 40px 150px;
+}
+.form-control {
+    
+    border: 2px solid black;
+    border-radius: var(--bs-border-radius);
+    
+}
+button{
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 10px;
+    color:rgb(71, 17, 75);
+    background: linear-gradient(0deg,rgb(71, 17, 75),#fff,rgb(71, 17, 75));
+}
+button:hover{
+    background: linear-gradient(0deg, rgba(224, 161, 161, 0.308),var(--secondary_color),rgb(77, 77, 194));
+}
