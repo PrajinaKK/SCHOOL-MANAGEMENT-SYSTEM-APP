@@ -19,59 +19,68 @@
                 </div>
                 <div class="col-12 d-flex justify-content-center align-items-center">
                     <div class="col-3" style="height: fit-content;">
-                        <form action="" method="post">
+                        <form action="" method="post" enctype="multipart/form-data">
                             {% csrf_token %}
                             <div class="mb-3">
                                 <label for="schoolcode" class="form-label">School Code</label>
-                                <input type="number" class="form-control" id="schoolcode" aria-describedby="firstnameHelp"> 
+                                <!-- <input type="number" class="form-control" id="schoolcode" aria-describedby="firstnameHelp"> -->
+                                 {{form.school_code}}
                             </div>
                             <div class="mb-3">
                                 <label for="schoolname" class="form-label">School Name</label>
-                                <input type="text" class="form-control" id="schoolname">
+                                <!-- <input type="text" class="form-control" id="schoolname"> -->
+                                {{form.school_name}}
                             </div>
                             <div class="mb-3">
                                 <label for="schooltype" class="form-label">School Type</label>
-                                <input type="text" class="form-control" id="schooltype" aria-describedby="firstnameHelp"> 
+                                <!-- <input type="text" class="form-control" id="schooltype" aria-describedby="firstnameHelp">  -->
+                                {{form.school_type}}
                             </div>
-                            <div class="mb-3">
-                                <label for="address" class="form-label">Address</label>
-                                <input type="text" class="form-control" id="address" aria-describedby="firstnameHelp"> 
-                            </div>
+                            
                             <div class="mb-3">
                                 <label for="principalname" class="form-label">School Principal</label>
-                                <input type="text" class="form-control" id="principalname">
+                                <!-- <input type="text" class="form-control" id="principalname"> -->
+                                {{form.school_principal}}
                             </div>
                             <div class="mb-3">
                                 <label for="location" class="form-label">Address</label>
-                                <input type="text" class="form-control" id="location" aria-describedby="firstnameHelp"> 
+                                <!-- <input type="text" class="form-control" id="location" aria-describedby="firstnameHelp">  -->
+                                {{form.address}}
                             </div>
                             <div class="mb-3">
                                 <label for="tel" class="form-label">Tel</label>
-                                <input type="number" class="form-control" id="tel" aria-describedby="firstnameHelp"> 
+                                <!-- <input type="number" class="form-control" id="tel" aria-describedby="firstnameHelp">  -->
+                                {{form.tel}}
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email">
+                                <!-- <input type="email" class="form-control" id="email"> -->
+                                {{form.email}}
                             </div>
                             <div class="mb-3">
                                 <label for="logo" class="form-label">School Logo</label>
-                                <input type="file" class="form-control" id="logo" aria-describedby="firstnameHelp"> 
+                                <!-- <input type="file" class="form-control" id="logo" aria-describedby="firstnameHelp">  -->
+                                {{form.school_logo}}
                             </div>
                             <div class="mb-3">
                                 <label for="Image" class="form-label">School Image</label>
-                                <input type="file" class="form-control" id="Image" aria-describedby="firstnameHelp"> 
+                                <!-- <input type="file" class="form-control" id="Image" aria-describedby="firstnameHelp">  -->
+                                {{form.school_image}}
                             </div>
                             <div class="mb-3">
                                 <label for="staff" class="form-label">Total Staff</label>
-                                <input type="number" class="form-control" id="staff" aria-describedby="firstnameHelp"> 
+                                <!-- <input type="number" class="form-control" id="staff" aria-describedby="firstnameHelp">  -->
+                                {{form.total_Staff}}
                             </div>
                             <div class="mb-3">
                                 <label for="tstudent" class="form-label">Total Student</label>
-                                <input type="number" class="form-control" id="tstudent" aria-describedby="firstnameHelp"> 
+                                <!-- <input type="number" class="form-control" id="tstudent" aria-describedby="firstnameHelp">  -->
+                                {{form.total_students}}
                             </div>
                             <div class="mb-3">
                                 <label for="fee" class="form-label">Total School Fee</label>
-                                <input type="number" class="form-control" id="fee" aria-describedby="firstnameHelp"> 
+                                <!-- <input type="number" class="form-control" id="fee" aria-describedby="firstnameHelp">  -->
+                                {{form.total_fee}}
                             </div>
                             <div class="mb-3 d-flex justify-content-center align-items-center">
                                 <button type="submit">Submit</button>

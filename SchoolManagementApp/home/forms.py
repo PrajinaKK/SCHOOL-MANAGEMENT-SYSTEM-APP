@@ -30,7 +30,7 @@ class StudentForm(forms.ModelForm):
     student_phone_number=forms.IntegerField(validators=[RegexValidator(r'^\+?1?\d{9,15}$', 'Enter a valid phone number (up to 10 digits)')],widget=forms.NumberInput(attrs={'class':'form-control','type' : ''}))
     student_photo=forms.ImageField(widget=forms.FileInput(attrs={'class': 'form-control'}))
     student_address=forms.CharField(widget=forms.TextInput(attrs={'class':'form-control','type':'text'}))
-    student_paid_fee = forms.IntegerField(widget=forms.NumberInput(attrs={'class':'form-control','type' : ''}))
+    student_paid_amount= forms.IntegerField(widget=forms.NumberInput(attrs={'class':'form-control','type' : ''}))
     student_admission_number=forms.IntegerField(widget=forms.NumberInput(attrs={'class':'form-control','type' : ''}))
     student_joined_date=forms.DateField(widget=forms.DateInput(attrs={'class':'form-control','type' : 'date'}))
     student_roll_number=forms.IntegerField(widget=forms.NumberInput(attrs={'class':'form-control','type' : ''}))
@@ -56,7 +56,7 @@ class StudentForm(forms.ModelForm):
             'student_phone_number',
             'student_photo',
             'student_address',
-            'student_paid_fee',
+            'student_paid_amount',
             'student_admission_number',
             'student_joined_date',
             'student_roll_number',

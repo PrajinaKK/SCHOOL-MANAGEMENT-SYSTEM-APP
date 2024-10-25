@@ -52,12 +52,13 @@
           <div class="logo-header" data-background-color="dark">
             <a href="index.html" class="logo">
               <img
-                src="{% static '/assets/img/kaiadmin/logo_light.svg' %}"
+                src="{% static '/bootstrap/img/s.png' %}"
                 alt="navbar brand"
                 class="navbar-brand"
-                height="20"
+                height="45"
               />
-              
+
+              <h5 style="color:#fff;margin-left: 20px;">{{user.school}}</h5>
               
             </a>
             <div class="nav-toggle">
@@ -94,7 +95,7 @@
                     
                     <li>
                       <a href="{% url 'home:dashboard' %}">
-                        <span class="sub-item">Add Students</span>
+                        <span class="sub-item">Dashboard</span>
                       </a>
                     </li>
                     <li>
@@ -199,21 +200,21 @@
               </li>
               <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#maps">
-                  <!-- <i class="fas fa-map-marker-alt"></i> -->
-                  <i class="fa-solid fa-medal"></i>
-                  <p>Sports</p>
+                  <i class="fa-solid fa-indian-rupee-sign"></i>
+                  
+                  <p>Fee History</p>
                   <span class="caret"></span>
                 </a>
                 <div class="collapse" id="maps">
                   <ul class="nav nav-collapse">
                     <li>
                       <a href="maps/googlemaps.html">
-                        <span class="sub-item">Football</span>
+                        <span class="sub-item">Paid</span>
                       </a>
                     </li>
                     <li>
                       <a href="maps/jsvectormap.html">
-                        <span class="sub-item">BaseBall</span>
+                        <span class="sub-item">Unpaid</span>
                       </a>
                     </li>
                   </ul>
@@ -626,14 +627,14 @@
                   >
                     <div class="avatar-sm">
                       <img
-                        src="assets/img/profile.jpg"
+                        src="{{user.user_photo.url}}"
                         alt="..."
                         class="avatar-img rounded-circle"
                       />
                     </div>
                     <span class="profile-username">
                       <span class="op-7">Hi,</span>
-                      <span class="fw-bold">Hizrian</span>
+                      <span class="fw-bold">{{user.username}}</span>
                     </span>
                   </a>
                   <ul class="dropdown-menu dropdown-user animated fadeIn">
@@ -684,7 +685,7 @@
             >
               <div>
                 <h3 class="fw-bold mb-3">Dashboard</h3>
-                <h6 class="op-7 mb-2">DashBoard for A.S.D. SCHOOL</h6>
+                <h6 class="op-7 mb-2">DashBoard for {{user.school}}</h6>
               </div>
               <div class="ms-md-auto py-2 py-md-0">
                 <a href="#" class="btn btn-label-info btn-round me-2">Manage</a>
@@ -700,13 +701,14 @@
                         <div
                           class="icon-big text-center icon-primary bubble-shadow-small"
                         >
-                          <i class="fas fa-users"></i>
+                          <!-- <i class="fas fa-users"></i> -->
+                           <i class="fas fa-user-graduate"></i>
                         </div>
                       </div>
                       <div class="col col-stats ms-3 ms-sm-0">
                         <div class="numbers">
                           <p class="card-category">Total Students</p>
-                          <h4 class="card-title">1,294</h4>
+                          <h4 class="card-title">{{total_students}}</h4>
                         </div>
                       </div>
                     </div>
@@ -721,13 +723,14 @@
                         <div
                           class="icon-big text-center icon-info bubble-shadow-small"
                         >
-                          <i class="fas fa-user-check"></i>
+                          <!-- <i class="fas fa-user-check"></i> -->
+                          <i class="fas fa-users"></i>
                         </div>
                       </div>
                       <div class="col col-stats ms-3 ms-sm-0">
                         <div class="numbers">
                           <p class="card-category">Total Staff</p>
-                          <h4 class="card-title">1303</h4>
+                          <h4 class="card-title">{{total_staff}}</h4>
                         </div>
                       </div>
                     </div>
@@ -742,13 +745,13 @@
                         <div
                           class="icon-big text-center icon-success bubble-shadow-small"
                         >
-                          <i class="fas fa-luggage-cart"></i>
+                        <i class="fa-solid fa-indian-rupee-sign"></i>
                         </div>
                       </div>
                       <div class="col col-stats ms-3 ms-sm-0">
                         <div class="numbers">
                           <p class="card-category">Total Fee</p>
-                          <h4 class="card-title">$ 1,345</h4>
+                          <h4 class="card-title">${{user.school.total_fee}}</h4>
                         </div>
                       </div>
                     </div>
@@ -763,13 +766,13 @@
                         <div
                           class="icon-big text-center icon-secondary bubble-shadow-small"
                         >
-                          <i class="far fa-check-circle"></i>
+                        <i class="fa-solid fa-book"></i>
                         </div>
                       </div>
                       <div class="col col-stats ms-3 ms-sm-0">
                         <div class="numbers">
                           <p class="card-category">Total Books</p>
-                          <h4 class="card-title">576</h4>
+                          <h4 class="card-title">{{total_books}}</h4>
                         </div>
                       </div>
                     </div>
@@ -778,227 +781,270 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-md-8">
-                <div class="card card-round">
+
+
+
+
+              <div class="col-md-12">
+                <div class="card">
                   <div class="card-header">
-                    <div class="card-head-row">
-                      <div class="card-title">User Statistics</div>
-                      <div class="card-tools">
-                        <a
-                          href="#"
-                          class="btn btn-label-success btn-round btn-sm me-2"
-                        >
-                          <span class="btn-label">
-                            <i class="fa fa-pencil"></i>
-                          </span>
-                          Export
-                        </a>
-                        <a href="#" class="btn btn-label-info btn-round btn-sm">
-                          <span class="btn-label">
-                            <i class="fa fa-print"></i>
-                          </span>
-                          Print
-                        </a>
-                      </div>
+                    <div class="d-flex align-items-center">
+                      <h4 class="card-title">Students</h4>
+                      <button
+                        class="btn btn-primary btn-round ms-auto"
+                        data-bs-toggle="modal"
+                        data-bs-target="#addRowModal"
+                      >
+                        <i class="fa fa-plus"></i>
+                        Add Students
+                      </button>
                     </div>
                   </div>
                   <div class="card-body">
-                    <div class="chart-container" style="min-height: 375px">
-                      <canvas id="statisticsChart"></canvas>
-                    </div>
-                    <div id="myChartLegend"></div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card card-primary card-round">
-                  <div class="card-header">
-                    <div class="card-head-row">
-                      <div class="card-title">Daily Sales</div>
-                      <div class="card-tools">
-                        <div class="dropdown">
-                          <button
-                            class="btn btn-sm btn-label-light dropdown-toggle"
-                            type="button"
-                            id="dropdownMenuButton"
-                            data-bs-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                          >
-                            Export
-                          </button>
-                          <div
-                            class="dropdown-menu"
-                            aria-labelledby="dropdownMenuButton"
-                          >
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#"
-                              >Something else here</a
+                    <!-- Modal -->
+                    <div
+                      class="modal fade"
+                      id="addRowModal"
+                      tabindex="-1"
+                      role="dialog"
+                      aria-hidden="true"
+                    >
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header border-0">
+                            <h5 class="modal-title">
+                              <span class="fw-mediumbold"> New</span>
+                              <span class="fw-light"> Row </span>
+                            </h5>
+                            <button
+                              type="button"
+                              class="close"
+                              data-dismiss="modal"
+                              aria-label="Close"
                             >
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <p class="small">
+                              Create a new row using this form, make sure you
+                              fill them all
+                            </p>
+                            <form>
+                              <div class="row">
+                                <div class="col-sm-12">
+                                  <div class="form-group form-group-default">
+                                    <label>Name</label>
+                                    <input
+                                      id="addName"
+                                      type="text"
+                                      class="form-control"
+                                      placeholder="fill name"
+                                    />
+                                  </div>
+                                </div>
+                                <div class="col-md-6 pe-0">
+                                  <div class="form-group form-group-default">
+                                    <label>Position</label>
+                                    <input
+                                      id="addPosition"
+                                      type="text"
+                                      class="form-control"
+                                      placeholder="fill position"
+                                    />
+                                  </div>
+                                </div>
+                                <div class="col-md-6">
+                                  <div class="form-group form-group-default">
+                                    <label>Office</label>
+                                    <input
+                                      id="addOffice"
+                                      type="text"
+                                      class="form-control"
+                                      placeholder="fill office"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                          <div class="modal-footer border-0">
+                            <button
+                              type="button"
+                              id="addRowButton"
+                              class="btn btn-primary"
+                            >
+                              Add
+                            </button>
+                            <button
+                              type="button"
+                              class="btn btn-danger"
+                              data-dismiss="modal"
+                            >
+                              Close
+                            </button>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div class="card-category">March 25 - April 02</div>
-                  </div>
-                  <div class="card-body pb-0">
-                    <div class="mb-4 mt-2">
-                      <h1>$4,578.58</h1>
-                    </div>
-                    <div class="pull-in">
-                      <canvas id="dailySalesChart"></canvas>
+
+                    <div class="table-responsive">
+                      <table
+                        id="add-row"
+                        class="display table table-striped table-hover"
+                      >
+                        <thead>
+                          <tr>
+                            <th>Admission Number</th>
+                            <th>Name</th>
+                            <th>Gender</th>
+                            <th>Photo</th>
+                            <th>Address</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>DOB</th>
+                            <th>Parent Name</th>
+                            <th>Blood Group</th>
+                            
+                            <th style="width: 10%">Action</th>
+                          </tr>
+                        </thead>
+                        <!-- <tfoot>
+                          <tr>
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>Office</th>
+                            <th>Action</th>
+                          </tr>
+                        </tfoot> -->
+                        <tbody>
+                          {% for student in students %}
+                          <tr>
+                            <td>{{student.student_admission_number}}</td>
+                            <td>{{student.student_name}}</td>
+                            <td>{{student.gender}}</td>
+                            <td><img src="{{student.student_photo.url}}" alt="" style="border-radius:50%;width:50px;height: 50px;"></td>
+                            <td>{{student.student_address}}</td>
+                            <td>{{student.student_email}}</td>
+                            <td>{{student.student_phone_number}} </td>
+                            <td>{{student.student_dob}}</td>
+                            <td>{{student.student_parent_name}}</td>
+                            <td>{{student.student_blood_group}}</td>
+                            <td>
+                              <div class="form-button-action">
+                                <button
+                                  type="button"
+                                  data-bs-toggle="tooltip"
+                                  title=""
+                                  class="btn btn-link btn-primary btn-lg"
+                                  data-original-title="Edit Task"
+                                >
+                                  <a href="{{student.get_url}}"><i class="fa fa-edit"></i></a>
+                                </button>
+                                <button
+                                  type="button"
+                                
+                                  class="btn btn-link btn-danger"
+                                  
+                                  data-bs-toggle="modal" 
+                                  data-bs-target="#staticBackdrop"
+                                  data-id="{{ student.slug }}"
+                                  
+                                >
+                                  <i class="fa fa-times"></i>
+                                </button>
+                                <button
+                                  type="button"
+                                  data-bs-toggle="tooltip"
+                                  title=""
+                                  class="btn btn-link btn-primary btn-lg"
+                                  data-original-title="Edit Task"
+                                >
+                                  <i class="fa-solid fa-eye"></i>
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+
+                          <!--reconfirmation-->
+                          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                              <div class="modal-content">
+                                <div class="modal-header" style="border-bottom: none;">
+                                  <i class="fa-solid fa-circle-exclamation" style="color:red;margin-right: 10px;"></i>
+                                  <h5 class="modal-title" id="staticBackdropLabel" style="color:red">Reconfirmation</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body" style="padding: 30px;">
+                                  <h6>This deletion <span style="color:red;">permanetly delete</span> the record. Are you sure you want to <span style="color:red;">continue</span>?</h6>
+                                </div>
+
+                                
+
+                                <div class="modal-footer" style="border-top: none;">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                  <!-- <a href="{{student.get_url_of_student}}"></a> -->
+                                    
+                                    <button type="button" class="btn btn-danger"  id="confirmDelete">Delete</button>
+                                  
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                        <!--Reconfirmation-->
+                          {% endfor %}
+                          
+                          <!-- <tr>
+                           
+                            <td>
+                              <div class="form-button-action">
+                                <button
+                                  type="button"
+                                  data-bs-toggle="tooltip"
+                                  title=""
+                                  class="btn btn-link btn-primary btn-lg"
+                                  data-original-title="Edit Task"
+                                >
+                                  <i class="fa fa-edit"></i>
+                                </button>
+                                <button
+                                  type="button"
+                                  data-bs-toggle="tooltip"
+                                  title=""
+                                  class="btn btn-link btn-danger"
+                                  data-original-title="Remove"
+                                >
+                                  <i class="fa fa-times"></i>
+                                </button>
+                                <button
+                                type="button"
+                                data-bs-toggle="tooltip"
+                                title=""
+                                class="btn btn-link btn-primary btn-lg"
+                                data-original-title="Edit Task"
+                              >
+                              <i class="fa-solid fa-eye"></i>
+                              </button>
+                              </div>
+                            </td>
+                          </tr> -->
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                 </div>
-                <div class="card card-round">
-                  <div class="card-body pb-0">
-                    <div class="h1 fw-bold float-end text-primary">+5%</div>
-                    <h2 class="mb-2">17</h2>
-                    <p class="text-muted">Users online</p>
-                    <div class="pull-in sparkline-fix">
-                      <div id="lineChart"></div>
-                    </div>
-                  </div>
-                </div>
+
+
+
               </div>
             </div>
-            <div class="row">
-              <div class="col-md-12">
-                <div class="card card-round">
-                  <div class="card-header">
-                    <div class="card-head-row card-tools-still-right">
-                      <h4 class="card-title">Users Geolocation</h4>
-                      <div class="card-tools">
-                        <button
-                          class="btn btn-icon btn-link btn-primary btn-xs"
-                        >
-                          <span class="fa fa-angle-down"></span>
-                        </button>
-                        <button
-                          class="btn btn-icon btn-link btn-primary btn-xs btn-refresh-card"
-                        >
-                          <span class="fa fa-sync-alt"></span>
-                        </button>
-                        <button
-                          class="btn btn-icon btn-link btn-primary btn-xs"
-                        >
-                          <span class="fa fa-times"></span>
-                        </button>
-                      </div>
-                    </div>
-                    <p class="card-category">
-                      Map of the distribution of users around the world
-                    </p>
-                  </div>
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="table-responsive table-hover table-sales">
-                          <table class="table">
-                            <tbody>
-                              <tr>
-                                <td>
-                                  <div class="flag">
-                                    <img
-                                      src="assets/img/flags/id.png"
-                                      alt="indonesia"
-                                    />
-                                  </div>
-                                </td>
-                                <td>Indonesia</td>
-                                <td class="text-end">2.320</td>
-                                <td class="text-end">42.18%</td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <div class="flag">
-                                    <img
-                                      src="assets/img/flags/us.png"
-                                      alt="united states"
-                                    />
-                                  </div>
-                                </td>
-                                <td>USA</td>
-                                <td class="text-end">240</td>
-                                <td class="text-end">4.36%</td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <div class="flag">
-                                    <img
-                                      src="assets/img/flags/au.png"
-                                      alt="australia"
-                                    />
-                                  </div>
-                                </td>
-                                <td>Australia</td>
-                                <td class="text-end">119</td>
-                                <td class="text-end">2.16%</td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <div class="flag">
-                                    <img
-                                      src="assets/img/flags/ru.png"
-                                      alt="russia"
-                                    />
-                                  </div>
-                                </td>
-                                <td>Russia</td>
-                                <td class="text-end">1.081</td>
-                                <td class="text-end">19.65%</td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <div class="flag">
-                                    <img
-                                      src="assets/img/flags/cn.png"
-                                      alt="china"
-                                    />
-                                  </div>
-                                </td>
-                                <td>China</td>
-                                <td class="text-end">1.100</td>
-                                <td class="text-end">20%</td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <div class="flag">
-                                    <img
-                                      src="assets/img/flags/br.png"
-                                      alt="brazil"
-                                    />
-                                  </div>
-                                </td>
-                                <td>Brasil</td>
-                                <td class="text-end">640</td>
-                                <td class="text-end">11.63%</td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="mapcontainer">
-                          <div
-                            id="world-map"
-                            class="w-100"
-                            style="height: 300px"
-                          ></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+
             <div class="row">
               <div class="col-md-4">
                 <div class="card card-round">
                   <div class="card-body">
                     <div class="card-head-row card-tools-still-right">
-                      <div class="card-title">New Customers</div>
+                      <div class="card-title">New Staffs</div>
                       <div class="card-tools">
                         <div class="dropdown">
                           <button
@@ -1015,127 +1061,39 @@
                             class="dropdown-menu"
                             aria-labelledby="dropdownMenuButton"
                           >
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">View All Staff</a>
+                            <!-- <a class="dropdown-item" href="#"></a>
                             <a class="dropdown-item" href="#"
                               >Something else here</a
-                            >
+                            > -->
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="card-list py-4">
+                      {% for staff in staffs %}
                       <div class="item-list">
                         <div class="avatar">
                           <img
-                            src="assets/img/jm_denis.jpg"
+                            src="{{staff.user_photo.url}}"
                             alt="..."
                             class="avatar-img rounded-circle"
                           />
                         </div>
                         <div class="info-user ms-3">
-                          <div class="username">Jimmy Denis</div>
-                          <div class="status">Graphic Designer</div>
+                          <div class="username">{{staff.username}}</div>
+    
+                          <div class="status">{{staff.position}}, {{staff.department}}</div>
                         </div>
                         <button class="btn btn-icon btn-link op-8 me-1">
                           <i class="far fa-envelope"></i>
                         </button>
                         <button class="btn btn-icon btn-link btn-danger op-8">
-                          <i class="fas fa-ban"></i>
+                          <i class="fa-solid fa-eye"></i>
                         </button>
                       </div>
-                      <div class="item-list">
-                        <div class="avatar">
-                          <span
-                            class="avatar-title rounded-circle border border-white"
-                            >CF</span
-                          >
-                        </div>
-                        <div class="info-user ms-3">
-                          <div class="username">Chandra Felix</div>
-                          <div class="status">Sales Promotion</div>
-                        </div>
-                        <button class="btn btn-icon btn-link op-8 me-1">
-                          <i class="far fa-envelope"></i>
-                        </button>
-                        <button class="btn btn-icon btn-link btn-danger op-8">
-                          <i class="fas fa-ban"></i>
-                        </button>
-                      </div>
-                      <div class="item-list">
-                        <div class="avatar">
-                          <img
-                            src="assets/img/talha.jpg"
-                            alt="..."
-                            class="avatar-img rounded-circle"
-                          />
-                        </div>
-                        <div class="info-user ms-3">
-                          <div class="username">Talha</div>
-                          <div class="status">Front End Designer</div>
-                        </div>
-                        <button class="btn btn-icon btn-link op-8 me-1">
-                          <i class="far fa-envelope"></i>
-                        </button>
-                        <button class="btn btn-icon btn-link btn-danger op-8">
-                          <i class="fas fa-ban"></i>
-                        </button>
-                      </div>
-                      <div class="item-list">
-                        <div class="avatar">
-                          <img
-                            src="assets/img/chadengle.jpg"
-                            alt="..."
-                            class="avatar-img rounded-circle"
-                          />
-                        </div>
-                        <div class="info-user ms-3">
-                          <div class="username">Chad</div>
-                          <div class="status">CEO Zeleaf</div>
-                        </div>
-                        <button class="btn btn-icon btn-link op-8 me-1">
-                          <i class="far fa-envelope"></i>
-                        </button>
-                        <button class="btn btn-icon btn-link btn-danger op-8">
-                          <i class="fas fa-ban"></i>
-                        </button>
-                      </div>
-                      <div class="item-list">
-                        <div class="avatar">
-                          <span
-                            class="avatar-title rounded-circle border border-white bg-primary"
-                            >H</span
-                          >
-                        </div>
-                        <div class="info-user ms-3">
-                          <div class="username">Hizrian</div>
-                          <div class="status">Web Designer</div>
-                        </div>
-                        <button class="btn btn-icon btn-link op-8 me-1">
-                          <i class="far fa-envelope"></i>
-                        </button>
-                        <button class="btn btn-icon btn-link btn-danger op-8">
-                          <i class="fas fa-ban"></i>
-                        </button>
-                      </div>
-                      <div class="item-list">
-                        <div class="avatar">
-                          <span
-                            class="avatar-title rounded-circle border border-white bg-secondary"
-                            >F</span
-                          >
-                        </div>
-                        <div class="info-user ms-3">
-                          <div class="username">Farrah</div>
-                          <div class="status">Marketing</div>
-                        </div>
-                        <button class="btn btn-icon btn-link op-8 me-1">
-                          <i class="far fa-envelope"></i>
-                        </button>
-                        <button class="btn btn-icon btn-link btn-danger op-8">
-                          <i class="fas fa-ban"></i>
-                        </button>
-                      </div>
+                      {% endfor %}
+
                     </div>
                   </div>
                 </div>
@@ -1144,7 +1102,7 @@
                 <div class="card card-round">
                   <div class="card-header">
                     <div class="card-head-row card-tools-still-right">
-                      <div class="card-title">Transaction History</div>
+                      <div class="card-title">Fees History</div>
                       <div class="card-tools">
                         <div class="dropdown">
                           <button
@@ -1161,11 +1119,9 @@
                             class="dropdown-menu"
                             aria-labelledby="dropdownMenuButton"
                           >
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#"
-                              >Something else here</a
-                            >
+                            <a class="dropdown-item" href="#">View All</a>
+                            <a class="dropdown-item" href="#">View latest</a>
+                            
                           </div>
                         </div>
                       </div>
@@ -1177,13 +1133,14 @@
                       <table class="table align-items-center mb-0">
                         <thead class="thead-light">
                           <tr>
-                            <th scope="col">Payment Number</th>
+                            <th scope="col">Payment By</th>
                             <th scope="col" class="text-end">Date & Time</th>
                             <th scope="col" class="text-end">Amount</th>
                             <th scope="col" class="text-end">Status</th>
                           </tr>
                         </thead>
                         <tbody>
+                          {% for student in students %}
                           <tr>
                             <th scope="row">
                               <button
@@ -1191,104 +1148,16 @@
                               >
                                 <i class="fa fa-check"></i>
                               </button>
-                              Payment from #10231
+                              Payment from #{{student.student_admission_number}}
                             </th>
-                            <td class="text-end">Mar 19, 2020, 2.45pm</td>
-                            <td class="text-end">$250.00</td>
+                            <!-- <td class="text-end">Mar 19, 2020, 2.45pm</td> -->
+                            <td class="text-end">{{student.fee_paid_date}}</td>
+                            <td class="text-end">${{student.student_paid_amount}}</td>
                             <td class="text-end">
-                              <span class="badge badge-success">Completed</span>
+                              <span class="badge badge-success">{{student.fee_status}}</span>
                             </td>
                           </tr>
-                          <tr>
-                            <th scope="row">
-                              <button
-                                class="btn btn-icon btn-round btn-success btn-sm me-2"
-                              >
-                                <i class="fa fa-check"></i>
-                              </button>
-                              Payment from #10231
-                            </th>
-                            <td class="text-end">Mar 19, 2020, 2.45pm</td>
-                            <td class="text-end">$250.00</td>
-                            <td class="text-end">
-                              <span class="badge badge-success">Completed</span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row">
-                              <button
-                                class="btn btn-icon btn-round btn-success btn-sm me-2"
-                              >
-                                <i class="fa fa-check"></i>
-                              </button>
-                              Payment from #10231
-                            </th>
-                            <td class="text-end">Mar 19, 2020, 2.45pm</td>
-                            <td class="text-end">$250.00</td>
-                            <td class="text-end">
-                              <span class="badge badge-success">Completed</span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row">
-                              <button
-                                class="btn btn-icon btn-round btn-success btn-sm me-2"
-                              >
-                                <i class="fa fa-check"></i>
-                              </button>
-                              Payment from #10231
-                            </th>
-                            <td class="text-end">Mar 19, 2020, 2.45pm</td>
-                            <td class="text-end">$250.00</td>
-                            <td class="text-end">
-                              <span class="badge badge-success">Completed</span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row">
-                              <button
-                                class="btn btn-icon btn-round btn-success btn-sm me-2"
-                              >
-                                <i class="fa fa-check"></i>
-                              </button>
-                              Payment from #10231
-                            </th>
-                            <td class="text-end">Mar 19, 2020, 2.45pm</td>
-                            <td class="text-end">$250.00</td>
-                            <td class="text-end">
-                              <span class="badge badge-success">Completed</span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row">
-                              <button
-                                class="btn btn-icon btn-round btn-success btn-sm me-2"
-                              >
-                                <i class="fa fa-check"></i>
-                              </button>
-                              Payment from #10231
-                            </th>
-                            <td class="text-end">Mar 19, 2020, 2.45pm</td>
-                            <td class="text-end">$250.00</td>
-                            <td class="text-end">
-                              <span class="badge badge-success">Completed</span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row">
-                              <button
-                                class="btn btn-icon btn-round btn-success btn-sm me-2"
-                              >
-                                <i class="fa fa-check"></i>
-                              </button>
-                              Payment from #10231
-                            </th>
-                            <td class="text-end">Mar 19, 2020, 2.45pm</td>
-                            <td class="text-end">$250.00</td>
-                            <td class="text-end">
-                              <span class="badge badge-success">Completed</span>
-                            </td>
-                          </tr>
+                          {% endfor %}
                         </tbody>
                       </table>
                     </div>
@@ -1558,7 +1427,43 @@
     <!-- Kaiadmin DEMO methods, don't include it in your project! -->
     <script src="{% static '/assets/js/setting-demo.js' %}"></script>
     <script src="{% static '/assets/js/demo.js' %}"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+     <script src="{% static '/jquery/jquery-3.7.1.min.js' %}"></script>
     <script>
+      // Store the student ID when the delete button is clicked
+      var studentId;
+
+      $('#staticBackdrop').on('show.bs.modal', function (event) {
+        alert("yes");
+        var button = $(event.relatedTarget); // Button that triggered the modal
+        
+        studentId = button.data('id'); // Extract student ID from data-* attributes
+        
+        console.log("this is the student sluf:",studentId);
+      });
+
+      // Handle the confirmation delete button in the modal
+      $('#confirmDelete').click(function() {
+        $.ajax({
+          url: '/delete/' + studentId ,  // URL for deletion (based on student ID)
+          type: 'POST',
+          data: {
+            csrfmiddlewaretoken: '{{ csrf_token }}',  // CSRF token for security
+          },
+          success: function(response) {
+            // Hide the modal after successful deletion
+            $('#deleteModal').modal('hide');
+            // Optionally remove the deleted student from the list (to update UI)
+            location.reload();  // Reload the page to reflect the deletion
+          },
+          error: function(xhr, status, error) {
+            console.error('Failed to delete student:', error);
+            alert('Something went wrong while trying to delete the student.');
+          }
+        });
+      });
+    </script>
+    <!-- <script>
       $("#lineChart").sparkline([102, 109, 120, 99, 110, 105, 115], {
         type: "line",
         height: "70",
@@ -1585,6 +1490,6 @@
         lineColor: "#ffa534",
         fillColor: "rgba(255, 165, 52, .14)",
       });
-    </script>
+    </script> -->
   </body>
 </html>

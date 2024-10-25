@@ -200,7 +200,7 @@
                       <h5 class="modal-title" id="staticBackdropLabel" style="color:rgb(124, 24, 101)">Login</h5>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form action="" method="post" id="login">
+                    <form action="" method="post">
                       {% csrf_token %}
                       <div class="modal-body d-flex justify-content-center align-items-center" style="flex-direction: column;padding-top: 30px;">
                         
@@ -265,7 +265,7 @@
     <script src="{% static '/bootstrap/js/bootstrap.min.js' %}"></script>
     <script src="{% static '/bootstrap/js/script.js' %}"></script>
     <script src="https://kit.fontawesome.com/648d5aac71.js" crossorigin="anonymous"></script>
-    <script>
+    <!-- <script>
           document.getElementById('login').onsubmit = function(e) {
           e.preventDefault(); // Prevent default form submission to stay on the page
           var form = this;
@@ -278,7 +278,7 @@
               }
           });
           };
-    </script>
+    </script> -->
 
     
 </body>

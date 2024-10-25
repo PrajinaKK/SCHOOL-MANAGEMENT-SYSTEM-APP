@@ -5,7 +5,8 @@ from .views import *
 app_name="accounts"
 urlpatterns = [
     path('',LoginView.as_view(), name="login"),
-    path('schooldetails/',SchoolDetailsView.as_view(), name="schooldetails")
+    path('schooldetails/',SchoolDetailsView.as_view(), name="schooldetails"),
+    path('about/',MoreAboutUser.as_view(),name="moreaboutuser")
 ]
 
 if settings.DEBUG:
