@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils import timezone
 from django.utils.text import slugify
+from django.urls import reverse
 
 # Create your models here.
 
@@ -67,9 +68,9 @@ class User(AbstractUser):
     address=models.CharField(max_length=255,blank=True)
     is_librarian = models.BooleanField(default=False)
     roles=models.CharField(max_length=1,choices=ROLES_CHOICES,blank=True)	
-    school = models.OneToOneField(School,on_delete=models.CASCADE,null=True,related_name="users")
-    position=models.OneToOneField(Position,on_delete=models.CASCADE,null=True,related_name="staffs")
-    department=models.OneToOneField(Department,on_delete=models.CASCADE,null=True,related_name="faculty_members")
+    school = models.ForeignKey(School,on_delete=models.CASCADE,null=True,related_name="users")
+    position=models.ForeignKey(Position,on_delete=models.CASCADE,null=True,related_name="staffs")
+    department=models.ForeignKey(Department,on_delete=models.CASCADE,null=True,related_name="faculty_members")
     joined_date=models.DateField(null=True)
     user_photo=models.ImageField(upload_to="user_photo/",null=True)
 
@@ -82,6 +83,10 @@ class User(AbstractUser):
         if not self.slug:
             self.slug = slugify(self.username)
         super().save(*args, **kwargs)    
+    def __str__(self):
+        return self.username if self.username else "No Username"  
+    def get_url(self):
+        return reverse('staff:update-staff',args=[self.slug])
     
 
 

@@ -14,6 +14,11 @@
       type="image/x-icon"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com">
+   <style>
+      
+     
+      
+    </style>
     <!-- Fonts and icons -->
     <script src="{% static '/assets/js/plugin/webfont/webfont.min.js' %}"></script>
     <script>
@@ -77,44 +82,44 @@
         <div class="sidebar-wrapper scrollbar scrollbar-inner">
           <div class="sidebar-content">
             <ul class="nav nav-secondary">
-                <li class="nav-item active">
-                    <a
-                      data-bs-toggle="collapse"
-                      href="#dashboard"
-                      class="collapsed"
-                      aria-expanded="false"
-                    >
-                      <!-- <i class="fas fa-home"></i> -->
-                      <i class="fa-solid fa-key"></i>
-                      <p>Admin</p>
-                      <span class="caret"></span>
-                    </a>
-                    <div class="collapse" id="dashboard">
-                      <ul class="nav nav-collapse">
-                        
-                        <li>
-                            <a href="{% url 'home:dashboard' %}">
-                              <span class="sub-item">Dashboard</span>
-                            </a>
-                          </li>
-                        <li>
-                          <a href="{% url 'home:add_student' %}">
-                            <span class="sub-item">Add Students</span>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="{% url 'home:newstaff' %}">
-                            <span class="sub-item">New Staff</span>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="{% url 'home:newlibrarian' %}">
-                            <span class="sub-item">New Librarian </span>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
+
+              <li class="nav-item active">
+                <a
+                  data-bs-toggle="collapse"
+                  href="#dashboard"
+                  class="collapsed"
+                  aria-expanded="false"
+                >
+                  <!-- <i class="fas fa-home"></i> -->
+                  <i class="fa-solid fa-key"></i>
+                  <p>Admin</p>
+                  <span class="caret"></span>
+                </a>
+                <div class="collapse" id="dashboard">
+                  <ul class="nav nav-collapse">
+                    <li>
+                      <a href="{% url 'home:dashboard' %}">
+                        <span class="sub-item">Dashboard</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{% url 'home:add_student' %}">
+                        <span class="sub-item">Add Students</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{% url 'home:newstaff' %}">
+                        <span class="sub-item">New Staff</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{% url 'home:newlibrarian' %}">
+                        <span class="sub-item">New Librarian </span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
               <li class="nav-section">
                 <span class="sidebar-mini-icon">
                   <i class="fa fa-ellipsis-h"></i>
@@ -131,32 +136,32 @@
                 <div class="collapse" id="base">
                   <ul class="nav nav-collapse">
                     <li>
-                      <a href="{% url 'staff:staff-list' %}">
-                        <span class="sub-item">All staff</span>
+                      <a href="components/avatars.html">
+                        <span class="sub-item">Facculty</span>
                       </a>
                     </li>
-                    
+                    <li>
+                      <a href="components/buttons.html">
+                        <span class="sub-item">Clerk</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="components/gridsystem.html">
+                        <span class="sub-item">Librarian</span>
+                      </a>
+                    </li>
                     
                     
                   </ul>
                 </div>
               </li>
               <li class="nav-item">
-                <a data-bs-toggle="collapse" href="#forms">
-                  <!-- <i class="fas fa-pen-square"></i> -->
+                <a href="#">
+                  <!-- <i class="fas fa-th-list"></i> -->
                   <i class="fa-solid fa-graduation-cap"></i>
                   <p>Students</p>
-                  <span class="caret"></span>
                 </a>
-                <div class="collapse" id="forms">
-                  <ul class="nav nav-collapse">
-                    <li>
-                      <a href="{% url 'home:student-list' %}">
-                        <span class="sub-item">All Students</span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+                
               </li>
               <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#forms">
@@ -168,11 +173,10 @@
                 <div class="collapse" id="forms">
                   <ul class="nav nav-collapse">
                     <li>
-                      <a href="{% url 'library:book-list' %}">
-                        <span class="sub-item">All Books</span>
+                      <a href="forms/forms.html">
+                        <span class="sub-item">Books</span>
                       </a>
                     </li>
-                   
                   </ul>
                 </div>
               </li>
@@ -701,22 +705,197 @@
                   <i class="icon-arrow-right"></i>
                 </li>
                 <li class="nav-item">
-                  <a href="#">New Librarian</a>
+                  <a href="#">New Staff</a>
                 </li>
                 <li class="separator">
                   <i class="icon-arrow-right"></i>
                 </li>
                 <li class="nav-item">
-                  <a href="#">Add New Librarian </a>
+                  <a href="#">Add New Staff</a>
                 </li>
               </ul>
             </div>
             <div class="row">
-                  <h1>not found</h1>
+              <div class="col-md-12">
+                <div class="card">
+                  <div class="card-header">
+                    <div class="card-title">Add New Staff</div>
+                  </div>
+                <form method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-6 col-lg-4">
+                        <div class="form-group">
+                          <label for="exampleFormControlSelect1"
+                            >School Name</label
+                          >
+                         
+                          {{form.school}}
+                        </div>
+                        
+                        <div class="form-floating form-floating-custom mb-3">
+                        
+                          {{form.first_name}}
+                          <label for="id_student_name">First Name</label>
+                        </div>
+                        <div class="form-floating form-floating-custom mb-3">
+                        
+                            {{form.last_name}}
+                            <label for="id_student_name">Last Name</label>
+                        </div>
+                      
+                        <div class="form-group">
+                          <label for="email2">Date Of Birth</label>
+                          {{form.dob}}
+                        
+                        </div>
+                        <div class="form-floating form-floating-custom mb-3">
+                        
+                          {{form.age}}
+                          <label for="id_age">Age</label>
+                      </div>
+                        <div class="form-group">
+                          <label>Gender</label><br />
+                          <div class="d-flex">
+                            <div class="form-check">
+                              
+                              {{form.gender}}
+                              
+                            </div>
+                            
+                          </div>
+                        </div>
+                        
+                       
+                      </div>
+
+
+                      <div class="col-md-6 col-lg-4">
+                        <h3>Contact Details</h3>
+                        <div class="form-floating form-floating-custom mb-3">
+                         
+                          {{form.email}}
+                          <label for="floatingInput">Email</label>
+                        </div>
+                        <div class="form-floating form-floating-custom mb-3">
+                          
+                          {{form.phone_number}}
+                          <label for="floatingInput">Phone Number</label>
+                        </div>
+                       
+                        <div class="form-floating form-floating-custom mb-3">
+                          
+                          {{form.Address}}
+                          <label for="floatingInput">Address</label>
+                        </div>
+
+                       
+                        
+                        
+
+                        <div class="form-group">
+                          <label for="exampleFormControlFile1"
+                            >Profile Image</label
+                          >
+                          {{form.user_photo}}
+                        </div>
+
+                       
+                    
+                      </div>
+                      <div class="col-md-6 col-lg-4">
+                        <label class="mb-3"><h3>Official Details</h3></label>
+
+                        <div class="form-group">
+                          
+
+                          <div class="form-group">
+                            <label class="form-label d-block">Select your Role</label>
+                            <div
+                              class="selectgroup selectgroup-secondary selectgroup-pills"
+                            >
+                            {% for role in form.roles%}
+                              <label class="selectgroup-item">
+                                
+                               
+                                {{role}}
+                                <span
+                                  class="selectgroup-button selectgroup-button-icon radio-circle"
+                                  > 
+                                  
+                                  <i class="fa-solid fa-key"></i>
+                                </span>
+                                
+                              </label>
+                              {% endfor %}
+                              
+ 
+                            </div>
+                          </div>
+
+
+                      
+                        <div class="form-floating form-floating-custom mb-3">
+                          {{form.joined_date}}
+                          
+                          <label for="floatingInput">Joining Date</label>
+                        </div>
+                        
+                        <div class="form-group">
+                          <label for="exampleFormControlSelect1"
+                            >Position</label
+                          >
+                         
+                          {{form.position}}
+                        </div>
+
+                        <div class="form-group">
+                          <label for="exampleFormControlSelect1"
+                            >Department</label
+                          >
+                         
+                          {{form.department}}
+                        </div>
+            
+                      
+                    </div>
+                  </div>
+                  <div class="card-action">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                    <button class="btn btn-danger">Cancel</button>
+                  </div>
+                </div>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
 
- 
+      <footer class="footer">
+          <div class="container-fluid d-flex justify-content-between">
+            <nav class="pull-left">
+              <ul class="nav">
+                <li class="nav-item">
+                  
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#"> Help </a>
+                </li>
+                
+              </ul>
+            </nav>
+            <div class="copyright">
+              2024, made with <i class="fa fa-heart heart text-danger"></i> by
+             
+            </div>
+            <div>
+              Distributed by
+              <a target="_blank" href="">@miracle.com</a>.
+            </div>
+          </div>
+        </footer> 
+      </div>
 
       <!-- Custom template | don't include it in your project! -->
       <div class="custom-template">
@@ -915,6 +1094,7 @@
       <!-- End Custom template -->
     </div>
     <!--   Core JS Files   -->
+    <script src="{% static '/bootstrap/js/script.js' %}"></script>   
     <script src="https://kit.fontawesome.com/648d5aac71.js" crossorigin="anonymous"></script>
     <script src="{% static '/assets/js/core/jquery-3.7.1.min.js' %}"></script>
     <script src="{% static '/assets/js/core/popper.min.js' %}"></script>

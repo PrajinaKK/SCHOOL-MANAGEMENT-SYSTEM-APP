@@ -130,32 +130,30 @@
                 <div class="collapse" id="base">
                   <ul class="nav nav-collapse">
                     <li>
-                      <a href="components/avatars.html">
-                        <span class="sub-item">Facculty</span>
+                      <a href="{% url 'staff:staff-list' %}">
+                        <span class="sub-item">All staff</span>
                       </a>
                     </li>
-                    <li>
-                      <a href="components/buttons.html">
-                        <span class="sub-item">Clerk</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="components/gridsystem.html">
-                        <span class="sub-item">Librarian</span>
-                      </a>
-                    </li>
-                    
-                    
+               
                   </ul>
                 </div>
               </li>
               <li class="nav-item">
-                <a href="#">
-                  <!-- <i class="fas fa-th-list"></i> -->
+                <a data-bs-toggle="collapse" href="#forms">
+                  <!-- <i class="fas fa-pen-square"></i> -->
                   <i class="fa-solid fa-graduation-cap"></i>
                   <p>Students</p>
+                  <span class="caret"></span>
                 </a>
-                
+                <div class="collapse" id="forms">
+                  <ul class="nav nav-collapse">
+                    <li>
+                      <a href="{% url 'home:student-list' %}">
+                        <span class="sub-item">All Students</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
               </li>
               <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#forms">
@@ -167,10 +165,11 @@
                 <div class="collapse" id="forms">
                   <ul class="nav nav-collapse">
                     <li>
-                      <a href="forms/forms.html">
-                        <span class="sub-item">Books</span>
+                      <a href="{% url 'library:book-list' %}">
+                        <span class="sub-item">All Books</span>
                       </a>
                     </li>
+                   
                   </ul>
                 </div>
               </li>
@@ -621,13 +620,24 @@
                   href="#"
                   aria-expanded="false"
                 >
-                  <div class="avatar-sm">
-                    <img
-                      src="{{user.user_photo.url}}"
-                      alt="..."
-                      class="avatar-img rounded-circle"
-                    />
-                  </div>
+                <div class="avatar-sm">
+                  {% if user.user_photo %}
+                  <img
+                    src="{{user.user_photo.url}}"
+                    alt="no-photo."
+                    class="avatar-img rounded-circle"
+                  />
+                  
+                  
+                  {% else %}
+                  <img
+                    src=""
+                    alt=""
+                    class="avatar-img rounded-circle"
+                  />
+                  <h6 style="font-size: 10px;color:blueviolet;">add photo</h6>
+                  {% endif %}
+                </div>
                   <span class="profile-username">
                     <span class="op-7">Hi,</span>
                     <span class="fw-bold">{{user.username}}</span>
@@ -713,13 +723,22 @@
                           <label for="exampleFormControlSelect1"
                             >School Name</label
                           >
-                          <!-- <select class="form-select" id="exampleFormControlSelect1">
-                            <option>A.D.S SCHOOL</option>
-                            <option>Z.X.V SCHOOL</option>
-                            <option>R.T.Y SCHOOL</option>
-                            
-                          </select> -->
+                         
                           {{form.school}}
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleFormControlSelect1"
+                            >Student Department</label
+                          >
+                         
+                          {{form.student_department}}
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleFormControlSelect1"
+                            >Department HOD</label
+                          >
+                         
+                          {{form.student_HOD}}
                         </div>
                         <div class="form-floating form-floating-custom mb-3">
                           <!-- <input
@@ -1024,9 +1043,7 @@
                 <li class="nav-item">
                   
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#"> Help </a>
-                </li>
+               
                 
               </ul>
             </nav>

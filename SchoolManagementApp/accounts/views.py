@@ -4,7 +4,7 @@ from django.views.generic import TemplateView,FormView
 from django.contrib.auth import authenticate,login,logout
 from . forms import SignUpForm,SchoolDetailsForm,LoginForm,MoreAboutForm
 from django.urls import reverse_lazy,reverse
-from .models import User
+from .models import User,School
 from django.http import HttpResponseRedirect
 
 # Create your views here.
@@ -24,6 +24,7 @@ class LoginView(FormView):
         print(self.request.POST)
         password = form.cleaned_data.get('password')
         username=form.cleaned_data.get('first_name')
+        print(username)
         confirm_password = form.cleaned_data.get('confirm_password')
         if 'login' in self.request.POST:
             # user = form.get_user()
@@ -45,7 +46,10 @@ class LoginView(FormView):
        
         user = form.save(commit=False)
         user.set_password(password)
+        print(user.set_password(password))
         user.username = username
+        print(user)
+        print(user.username)
         if self.request.POST['roles'] == "A":
             user.is_superuser = True
         if self.request.POST['roles'] == "S":
@@ -62,6 +66,11 @@ class LoginView(FormView):
             return HttpResponseRedirect(reverse("accounts:schooldetails"))
         
         return redirect(self.success_url)
+    
+    def form_invalid(self, form):
+        print("Form is invalid", form.errors)
+        return super().form_invalid(form)
+    
         
         
 
@@ -71,9 +80,21 @@ class SchoolDetailsView(FormView):
     form_class=SchoolDetailsForm
     success_url = reverse_lazy("home:dashboard")
     def form_valid(self, form):
+
+        school_name = form.cleaned_data.get('school_name')
+        print(school_name)
+        user=self.request.user
+        print(user)
+        print(user.school)
+        
         print(self.request.POST)
         if self.request.user.is_authenticated:
             form.save()
+    
+        school = School.objects.get(school_name=school_name)
+        user.school = school    
+        user.save()
+
         return redirect(self.success_url)
     
     def form_invalid(self, form):

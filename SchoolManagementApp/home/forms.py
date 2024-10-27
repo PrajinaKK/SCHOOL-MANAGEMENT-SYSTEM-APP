@@ -1,7 +1,7 @@
 from django import forms
 from django.core.validators import RegexValidator
 from .models import Student
-from accounts.models import School
+from accounts.models import School, Department,User
 
 class StudentForm(forms.ModelForm):
     
@@ -10,7 +10,7 @@ class StudentForm(forms.ModelForm):
     NATIONALITY_CHOICES=(('IN','INDIA'),('USA','AMERICA'))
     CATEGORY_CHOICES=(('SC/ST','SC/ST'),('OEC','OEC'),('OBC','OBC'))
     RELIGION_CHOICES=(('H','HINDU'),('C','CHRISTIAN'),('M','MUSLUM'))
-    # school=forms.(widget=forms.Select(attrs={'class':'form-select','type' : 'text'}))
+    
     
     school = forms.ModelChoiceField(
         queryset=School.objects.all(),
@@ -18,7 +18,15 @@ class StudentForm(forms.ModelForm):
         # empty_label="Select a School",
         # label="School"
     )
-
+    student_department=forms.ModelChoiceField(
+        queryset=Department.objects.all(),
+        widget=forms.Select(attrs={'class':'form-select','type' : ''})
+    )
+    student_HOD = forms.ModelChoiceField(
+        queryset=User.objects.filter(is_staff=True),
+        widget=forms.Select(attrs={'class':'form-select','type' : ''}),
+       
+    )
     student_name=forms.CharField(widget=forms.TextInput(attrs={'class':'form-control','type':'text'}))
     student_dob=forms.DateField(widget=forms.DateInput(attrs={'class':'form-control','type' : 'date'}))
     student_blood_group=forms.ChoiceField(choices=BLOODGROUP_CHOICES,widget=forms.Select(attrs={'class':'form-select','type' : 'text'}))

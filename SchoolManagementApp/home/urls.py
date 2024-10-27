@@ -9,7 +9,8 @@ urlpatterns = [
     path('newStaff/',NewStaffAddView.as_view(), name="newstaff"),
     path('newLibrarian/',NewLibrarianAddView.as_view(), name="newlibrarian"),
     path("update/student/<slug:slug>", UpdateStudentView.as_view(),name="update_student"),
-    path('delete/<slug:slug>', DeleteStudentView.as_view(),name="delete_student")
+    path('delete/<slug:slug>/', DeleteStudentView.as_view(),name="delete_student"),
+    path("students/",StudentListView.as_view(),name="student-list")
 ]
 
 if settings.DEBUG:

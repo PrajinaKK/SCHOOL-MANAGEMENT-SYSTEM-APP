@@ -3,6 +3,7 @@ from home.models import Student
 from accounts.models import User,School
 from django.utils import timezone
 from django.utils.text import slugify
+from django.urls import reverse
 
 
 # Create your models here.
@@ -22,7 +23,7 @@ class Books(models.Model):
     slug=models.SlugField(max_length=100, null=True)
     book_author=models.CharField(max_length=100)
     total_books=models.IntegerField()
-    book_genre = models.OneToOneField(BookGenre,on_delete=models.CASCADE,related_name="book")
+    book_genre = models.ForeignKey(BookGenre,on_delete=models.CASCADE,related_name="book")
     book_price=models.IntegerField()
     book_image=models.ImageField(upload_to="image_of_book/")
     book_number=models.IntegerField()
@@ -45,3 +46,5 @@ class Books(models.Model):
         if not self.slug:
             self.slug = slugify(self.book_name)
         super().save(*args, *kwargs)    
+    def get_url(self):
+        return reverse("library:update-book",args= [self.slug])

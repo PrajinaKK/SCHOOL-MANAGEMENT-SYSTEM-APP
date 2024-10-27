@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Dashboard</title>
+    <title>Dashboard copy 3 BOOKS</title>
     <meta
       content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
       name="viewport"
@@ -132,33 +132,32 @@
                 <div class="collapse" id="base">
                   <ul class="nav nav-collapse">
                     <li>
-                      <a href="{% url 'staff:staff-list' %}">
-                        <span class="sub-item">All staff</span>
+                      <a href="components/avatars.html">
+                        <span class="sub-item">Facculty</span>
                       </a>
-                      
                     </li>
-                    
+                    <li>
+                      <a href="components/buttons.html">
+                        <span class="sub-item">Clerk</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="components/gridsystem.html">
+                        <span class="sub-item">Librarian</span>
+                      </a>
+                    </li>
                     
                     
                   </ul>
                 </div>
               </li>
               <li class="nav-item">
-                <a data-bs-toggle="collapse" href="#forms">
-                  <!-- <i class="fas fa-pen-square"></i> -->
+                <a data-bs-toggle="collapse" href="#">
+                  <!-- <i class="fas fa-th-list"></i> -->
                   <i class="fa-solid fa-graduation-cap"></i>
                   <p>Students</p>
-                  <span class="caret"></span>
                 </a>
-                <div class="collapse" id="forms">
-                  <ul class="nav nav-collapse">
-                    <li>
-                      <a href="{% url 'home:student-list' %}">
-                        <span class="sub-item">All Students</span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+                
               </li>
               <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#forms">
@@ -170,11 +169,10 @@
                 <div class="collapse" id="forms">
                   <ul class="nav nav-collapse">
                     <li>
-                      <a href="{% url 'library:book-list' %}">
-                        <span class="sub-item">All Books</span>
+                      <a href="forms/forms.html">
+                        <span class="sub-item">Books</span>
                       </a>
                     </li>
-                   
                   </ul>
                 </div>
               </li>
@@ -693,121 +691,33 @@
 
         <div class="container">
           <div class="page-inner">
+
             <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
               <div>
-                <h3 class="fw-bold mb-3">Dashboard</h3>
-                <h6 class="op-7 mb-2">DashBoard for {{user.school}}</h6>
+                <h3 class="fw-bold mb-3">Book List</h3>
+                <h6 class="op-7 mb-2">BOOK LIST BY {{user.school}}</h6>
               </div>
               <div class="ms-md-auto py-2 py-md-0">
                 <a href="#" class="btn btn-label-info btn-round me-2">Manage</a>
-                <a href="" class="btn btn-primary btn-round">Add Students</a>
+                <a href="" class="btn btn-primary btn-round">Add Books</a>
               </div>
             </div>
+
+
             <div class="row">
-              <div class="col-sm-6 col-md-3">
-                <div class="card card-stats card-round">
-                  <div class="card-body">
-                    <div class="row align-items-center">
-                      <div class="col-icon">
-                        <div
-                          class="icon-big text-center icon-primary bubble-shadow-small"
-                        >
-                          <!-- <i class="fas fa-users"></i> -->
-                           <i class="fas fa-user-graduate"></i>
-                        </div>
-                      </div>
-                      <div class="col col-stats ms-3 ms-sm-0">
-                        <div class="numbers">
-                          <p class="card-category">Total Students</p>
-                          <h4 class="card-title">{{total_students}}</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-3">
-                <div class="card card-stats card-round">
-                  <div class="card-body">
-                    <div class="row align-items-center">
-                      <div class="col-icon">
-                        <div
-                          class="icon-big text-center icon-info bubble-shadow-small"
-                        >
-                          <!-- <i class="fas fa-user-check"></i> -->
-                          <i class="fas fa-users"></i>
-                        </div>
-                      </div>
-                      <div class="col col-stats ms-3 ms-sm-0">
-                        <div class="numbers">
-                          <p class="card-category">Total Staff</p>
-                          <h4 class="card-title">{{total_staff}}</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-3">
-                <div class="card card-stats card-round">
-                  <div class="card-body">
-                    <div class="row align-items-center">
-                      <div class="col-icon">
-                        <div
-                          class="icon-big text-center icon-success bubble-shadow-small"
-                        >
-                        <i class="fa-solid fa-indian-rupee-sign"></i>
-                        </div>
-                      </div>
-                      <div class="col col-stats ms-3 ms-sm-0">
-                        <div class="numbers">
-                          <p class="card-category">Total Fee</p>
-                          <h4 class="card-title">${{user.school.total_fee}}</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-3">
-                <div class="card card-stats card-round">
-                  <div class="card-body">
-                    <div class="row align-items-center">
-                      <div class="col-icon">
-                        <div
-                          class="icon-big text-center icon-secondary bubble-shadow-small"
-                        >
-                        <i class="fa-solid fa-book"></i>
-                        </div>
-                      </div>
-                      <div class="col col-stats ms-3 ms-sm-0">
-                        <div class="numbers">
-                          <p class="card-category">Total Books</p>
-                          <h4 class="card-title">{{total_books}}</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-
-
-
 
               <div class="col-md-12">
                 <div class="card">
                   <div class="card-header">
                     <div class="d-flex align-items-center">
-                      <h4 class="card-title">Students</h4>
+                      <h4 class="card-title">All Library Books Available</h4>
                       <button
                         class="btn btn-primary btn-round ms-auto"
                         data-bs-toggle="modal"
                         data-bs-target="#addRowModal"
                       >
                         <i class="fa fa-plus"></i>
-                        Add Students
+                        Add Books
                       </button>
                     </div>
                   </div>
@@ -902,24 +812,26 @@
                     <div class="table-responsive">
                       <table
                         id="add-row"
-                        class="display table table-striped table-hover"
+                        class="display table table-striped table-hover table-head-bg-primary"
                       >
                         <thead>
                           <tr>
-                            <th>Admission Number</th>
-                            <th>Department</th>
-                            <th>HOD</th>
-                            <th>Name</th>
-                            <th>Gender</th>
-                            <th>Photo</th>
-                            <th>Address</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>DOB</th>
-                            <th>Parent Name</th>
-                            <th>Blood Group</th>
+                            <th>ID</th>
+                            <th>Book Number</th>
+                            <th>Librarian</th>
+                            <th>Book Name</th>
+                            <th>Genre</th>
+                            <th>Author</th>
+                            <th>Price</th>
+                            <th>Image</th>
+                            <th>Number of copies</th>
+                            <th>Borrowed By</th>
+                            <th>Borrowed Date</th>
+                            <th>Created at</th>
+                            <th>updated at</th>
                             
-                            <th style="width: 10%">Action</th>
+                            
+                            <th style="width: 10%">ACTIONS</th>
                           </tr>
                         </thead>
                         <!-- <tfoot>
@@ -934,8 +846,6 @@
                           {% for student in students %}
                           <tr>
                             <td>{{student.student_admission_number}}</td>
-                            <td>{{student.student_department}}</td>
-                            <td>{{student.student_HOD}}</td>
                             <td>{{student.student_name}}</td>
                             <td>{{student.gender}}</td>
                             <td><img src="{{student.student_photo.url}}" alt="" style="border-radius:50%;width:50px;height: 50px;"></td>
@@ -1011,6 +921,27 @@
                         </div>
                         <!--Reconfirmation-->
                           {% endfor %}
+
+
+                          
+ 
+
+                         
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                           
                           <!-- <tr>
                            
@@ -1057,134 +988,7 @@
               </div>
             </div>
 
-            <div class="row">
-              <div class="col-md-4">
-                <div class="card card-round">
-                  <div class="card-body">
-                    <div class="card-head-row card-tools-still-right">
-                      <div class="card-title">New Staffs</div>
-                      <div class="card-tools">
-                        <div class="dropdown">
-                          <button
-                            class="btn btn-icon btn-clean me-0"
-                            type="button"
-                            id="dropdownMenuButton"
-                            data-bs-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                          >
-                            <i class="fas fa-ellipsis-h"></i>
-                          </button>
-                          <div
-                            class="dropdown-menu"
-                            aria-labelledby="dropdownMenuButton"
-                          >
-                            <a class="dropdown-item" href="#">View All Staff</a>
-                            <!-- <a class="dropdown-item" href="#"></a>
-                            <a class="dropdown-item" href="#"
-                              >Something else here</a
-                            > -->
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card-list py-4">
-                      {% for staff in staffs %}
-                      <div class="item-list">
-                        <div class="avatar">
-                          {% if staff.user_photo %}
-                          <img
-                            src="{{staff.user_photo.url}}"
-                            alt="..."
-                            class="avatar-img rounded-circle"
-                          />
-                          {% endif %}
-                        </div>
-                        <div class="info-user ms-3">
-                          <div class="username">{{staff.username}}</div>
-    
-                          <div class="status">{{staff.position}}, {{staff.department}}</div>
-                        </div>
-                        <button class="btn btn-icon btn-link op-8 me-1">
-                          <i class="far fa-envelope"></i>
-                        </button>
-                        <button class="btn btn-icon btn-link btn-danger op-8">
-                          <i class="fa-solid fa-eye"></i>
-                        </button>
-                      </div>
-                      {% endfor %}
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-8">
-                <div class="card card-round">
-                  <div class="card-header">
-                    <div class="card-head-row card-tools-still-right">
-                      <div class="card-title">Fees History</div>
-                      <div class="card-tools">
-                        <div class="dropdown">
-                          <button
-                            class="btn btn-icon btn-clean me-0"
-                            type="button"
-                            id="dropdownMenuButton"
-                            data-bs-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                          >
-                            <i class="fas fa-ellipsis-h"></i>
-                          </button>
-                          <div
-                            class="dropdown-menu"
-                            aria-labelledby="dropdownMenuButton"
-                          >
-                            <a class="dropdown-item" href="#">View All</a>
-                            <a class="dropdown-item" href="#">View latest</a>
-                            
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-body p-0">
-                    <div class="table-responsive">
-                      <!-- Projects table -->
-                      <table class="table align-items-center mb-0">
-                        <thead class="thead-light">
-                          <tr>
-                            <th scope="col">Payment By</th>
-                            <th scope="col" class="text-end">Date & Time</th>
-                            <th scope="col" class="text-end">Amount</th>
-                            <th scope="col" class="text-end">Status</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {% for student in students %}
-                          <tr>
-                            <th scope="row">
-                              <button
-                                class="btn btn-icon btn-round btn-success btn-sm me-2"
-                              >
-                                <i class="fa fa-check"></i>
-                              </button>
-                              Payment from #{{student.student_admission_number}}
-                            </th>
-                            <!-- <td class="text-end">Mar 19, 2020, 2.45pm</td> -->
-                            <td class="text-end">{{student.fee_paid_date}}</td>
-                            <td class="text-end">${{student.student_paid_amount}}</td>
-                            <td class="text-end">
-                              <span class="badge badge-success">{{student.fee_status}}</span>
-                            </td>
-                          </tr>
-                          {% endfor %}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+ 
           </div>
         </div>
 
@@ -1195,7 +999,9 @@
                 <li class="nav-item">
                   
                 </li>
-             
+                <li class="nav-item">
+                  <a class="nav-link" href="#"> Help </a>
+                </li>
                 
               </ul>
             </nav>
@@ -1463,7 +1269,7 @@
       // Handle the confirmation delete button in the modal
       $('#confirmDelete').click(function() {
         $.ajax({
-          url: '/delete/' + studentId + '/',  // URL for deletion (based on student ID)
+          url: '/delete/' + studentId ,  // URL for deletion (based on student ID)
           type: 'POST',
           data: {
             csrfmiddlewaretoken: '{{ csrf_token }}',  // CSRF token for security

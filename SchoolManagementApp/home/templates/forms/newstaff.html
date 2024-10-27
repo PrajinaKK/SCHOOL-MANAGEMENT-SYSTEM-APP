@@ -14,6 +14,11 @@
       type="image/x-icon"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com">
+   <style>
+      
+     
+      
+    </style>
     <!-- Fonts and icons -->
     <script src="{% static '/assets/js/plugin/webfont/webfont.min.js' %}"></script>
     <script>
@@ -131,32 +136,32 @@
                 <div class="collapse" id="base">
                   <ul class="nav nav-collapse">
                     <li>
-                      <a href="components/avatars.html">
-                        <span class="sub-item">Facculty</span>
+                      <a href="{% url 'staff:staff-list' %}">
+                        <span class="sub-item">All staff</span>
                       </a>
                     </li>
-                    <li>
-                      <a href="components/buttons.html">
-                        <span class="sub-item">Clerk</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="components/gridsystem.html">
-                        <span class="sub-item">Librarian</span>
-                      </a>
-                    </li>
+                    
                     
                     
                   </ul>
                 </div>
               </li>
               <li class="nav-item">
-                <a href="#">
-                  <!-- <i class="fas fa-th-list"></i> -->
+                <a data-bs-toggle="collapse" href="#forms">
+                  <!-- <i class="fas fa-pen-square"></i> -->
                   <i class="fa-solid fa-graduation-cap"></i>
                   <p>Students</p>
+                  <span class="caret"></span>
                 </a>
-                
+                <div class="collapse" id="forms">
+                  <ul class="nav nav-collapse">
+                    <li>
+                      <a href="{% url 'home:student-list' %}">
+                        <span class="sub-item">All Students</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
               </li>
               <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#forms">
@@ -168,10 +173,11 @@
                 <div class="collapse" id="forms">
                   <ul class="nav nav-collapse">
                     <li>
-                      <a href="forms/forms.html">
-                        <span class="sub-item">Books</span>
+                      <a href="{% url 'library:book-list' %}">
+                        <span class="sub-item">All Books</span>
                       </a>
                     </li>
+                   
                   </ul>
                 </div>
               </li>
@@ -622,13 +628,24 @@
                   href="#"
                   aria-expanded="false"
                 >
-                  <div class="avatar-sm">
-                    <img
-                      src="{{user.user_photo.url}}"
-                      alt="..."
-                      class="avatar-img rounded-circle"
-                    />
-                  </div>
+                <div class="avatar-sm">
+                  {% if user.user_photo %}
+                  <img
+                    src="{{user.user_photo.url}}"
+                    alt="no-photo."
+                    class="avatar-img rounded-circle"
+                  />
+                  
+                  
+                  {% else %}
+                  <img
+                    src=""
+                    alt=""
+                    class="avatar-img rounded-circle"
+                  />
+                  <h6 style="font-size: 10px;color:blueviolet;">add photo</h6>
+                  {% endif %}
+                </div>
                   <span class="profile-username">
                     <span class="op-7">Hi,</span>
                     <span class="fw-bold">{{user.username}}</span>
@@ -705,11 +722,18 @@
                   <div class="card-header">
                     <div class="card-title">Add New Staff</div>
                   </div>
-                <form method="post">
+                <form method="post" enctype="multipart/form-data">
                   {% csrf_token %}
                   <div class="card-body">
                     <div class="row">
                       <div class="col-md-6 col-lg-4">
+                        <div class="form-group">
+                          <label for="exampleFormControlSelect1"
+                            >School Name</label
+                          >
+                         
+                          {{form_two.school}}
+                        </div>
                         
                         <div class="form-floating form-floating-custom mb-3">
                         
@@ -724,12 +748,14 @@
                       
                         <div class="form-group">
                           <label for="email2">Date Of Birth</label>
-                    
-           
-            
-                          {{form.DOB}}
+                          {{form.dob}}
                         
                         </div>
+                        <div class="form-floating form-floating-custom mb-3">
+                        
+                          {{form.age}}
+                          <label for="id_age">Age</label>
+                      </div>
                         <div class="form-group">
                           <label>Gender</label><br />
                           <div class="d-flex">
@@ -765,58 +791,88 @@
                           <label for="floatingInput">Address</label>
                         </div>
 
+                        <div class="form-floating form-floating-custom mb-3">
+                          {{form.password}}
+                          
+                          <label for="floatingInput">Password</label>
+                        </div>
+
+                        <div class="form-floating form-floating-custom mb-3">
+                          {{form.confirm_password}}
+                          <label for="floatingInput">Confirm password</label>
+                        </div>
+                        
+                        
+
+                        <div class="form-group">
+                          <label for="exampleFormControlFile1"
+                            >Profile Image</label
+                          >
+                          {{form_two.user_photo}}
+                        </div>
+
                        
                     
                       </div>
                       <div class="col-md-6 col-lg-4">
                         <label class="mb-3"><h3>Official Details</h3></label>
-                        <!-- <div class="form-floating form-floating-custom mb-3">
-                          <input
-                            type="number"
-                            class="form-control"
-                            id="floatingInput"
-                            placeholder="name@example.com"
-                          />
+
+                        <div class="form-group">
                           
-                          <label for="floatingInput">Admission Number</label>
-                        </div> -->
+
+                          <div class="form-group">
+                            <label class="form-label d-block">Select your Role</label>
+                            <div
+                              class="selectgroup selectgroup-secondary selectgroup-pills"
+                            >
+                            {% for role in form.roles%}
+                              <label class="selectgroup-item">
+                                
+                               
+                                {{role}}
+                                <span
+                                  class="selectgroup-button selectgroup-button-icon radio-circle"
+                                  > 
+                                  
+                                  <i class="fa-solid fa-key"></i>
+                                </span>
+                                
+                              </label>
+                              {% endfor %}
+                              
+ 
+                            </div>
+                          </div>
+
+
+                      
                         <div class="form-floating form-floating-custom mb-3">
-                          <input
-                            type="date"
-                            class="form-control"
-                            id="floatingInput"
-                            placeholder="name@example.com"
-                          />
+                          {{form_two.joined_date}}
                           
                           <label for="floatingInput">Joining Date</label>
                         </div>
-                        <div class="form-floating form-floating-custom mb-3">
-                          <input
-                            type="number"
-                            class="form-control"
-                            id="floatingInput"
-                            placeholder="name@example.com"
-                          />
-                          
-                          <label for="floatingInput">Roll No.</label>
+                        
+                        <div class="form-group">
+                          <label for="exampleFormControlSelect1"
+                            >Position</label
+                          >
+                         
+                          {{form_two.position}}
                         </div>
-                        
-                        
-                        
-                     
-                        
-          
-                       
-                       
-                        
-                       
-                       
-                       
+
+                        <div class="form-group">
+                          <label for="exampleFormControlSelect1"
+                            >Department</label
+                          >
+                         
+                          {{form_two.department}}
+                        </div>
+            
                       
                     </div>
                   </div>
                   <div class="card-action">
-                    <button class="btn btn-success">Submit</button>
+                    <button type="submit" class="btn btn-success">Submit</button>
                     <button class="btn btn-danger">Cancel</button>
                   </div>
                 </div>
@@ -833,9 +889,9 @@
                 <li class="nav-item">
                   
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                   <a class="nav-link" href="#"> Help </a>
-                </li>
+                </li> -->
                 
               </ul>
             </nav>
@@ -1048,6 +1104,7 @@
       <!-- End Custom template -->
     </div>
     <!--   Core JS Files   -->
+    <script src="{% static '/bootstrap/js/script.js' %}"></script>   
     <script src="https://kit.fontawesome.com/648d5aac71.js" crossorigin="anonymous"></script>
     <script src="{% static '/assets/js/core/jquery-3.7.1.min.js' %}"></script>
     <script src="{% static '/assets/js/core/popper.min.js' %}"></script>
@@ -1069,7 +1126,7 @@
     <script src="{% static '/assets/js/plugin/datatables/datatables.min.js' %}"></script>
 
     <!-- Bootstrap Notify -->
-    <script src="{% static '/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js' %}"></script>
+    <!-- <script src="{% static '/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js' %}"></script> -->
 
     <!-- jQuery Vector Maps -->
     <script src="{% static '/assets/js/plugin/jsvectormap/jsvectormap.min.js' %}"></script>

@@ -1,8 +1,9 @@
 from django.db import models
-from accounts.models import User,School
+from accounts.models import User,School, Department
 from django.utils import timezone
 from django.utils.text import slugify
 from django.urls import reverse
+
 # from library.models import Books
 # Create your models here.
 
@@ -16,7 +17,7 @@ class Student(models.Model):
     NATIONALITY_CHOICES=(('IN','INDIA'),('USA','AMERICA'))
     CATEGORY_CHOICES=(('SC/ST','SC/ST'),('OEC','OEC'),('OBC','OBC'))
     RELIGION_CHOICES=(('H','HINDU'),('C','CHRISTIAN'),('M','MUSLUM'))
-    school=models.OneToOneField(School,on_delete=models.CASCADE,related_name="student")
+    school=models.ForeignKey(School,on_delete=models.CASCADE,related_name="student")
     student_name=models.CharField(max_length=100)
     slug=models.SlugField(max_length=100,null=True)
     student_dob=models.DateField()
@@ -48,6 +49,9 @@ class Student(models.Model):
     updated_at=models.DateTimeField(auto_now=True)
 
     delete_status=models.IntegerField(choices=DELETE_CHOICES,default=LIVE)
+
+    student_department = models.ForeignKey(Department,on_delete=models.CASCADE,related_name="dep_students",null=True)
+    student_HOD = models.ForeignKey(User,on_delete=models.CASCADE,related_name="hod_students",null=True)
     
 
     def save(self,*args,**kwargs):
