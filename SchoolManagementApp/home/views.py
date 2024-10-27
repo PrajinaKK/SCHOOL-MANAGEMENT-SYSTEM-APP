@@ -7,6 +7,7 @@ from library.models import Books
 from django.db.models import Q
 from django.urls import reverse_lazy
 from django.core.exceptions import PermissionDenied
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 
@@ -14,7 +15,7 @@ from django.views.generic import TemplateView,FormView,CreateView,UpdateView,Del
 
 
 # Create your views here.
-class DeleteStudentView(DeleteView):
+class DeleteStudentView(LoginRequiredMixin,DeleteView):
     model = Student
     
     success_url = reverse_lazy('home:dashboard')
@@ -33,7 +34,7 @@ class DeleteStudentView(DeleteView):
         
         return redirect(self.success_url)
 
-class UpdateStudentView(UpdateView):
+class UpdateStudentView(LoginRequiredMixin, UpdateView):
     template_name = "forms/updateStudent.html"
     form_class=StudentForm
     # context_object_name="form"
@@ -42,13 +43,13 @@ class UpdateStudentView(UpdateView):
     slug_url_kwarg= 'slug'
     success_url = reverse_lazy("home:dashboard")
 
-class StudentListView(ListView):
+class StudentListView(LoginRequiredMixin, ListView):
    
     template_name = "dashboard/student-list.html"
     queryset=Student.objects.all()
     context_object_name = "students"
 
-class DashboardView(ListView):
+class DashboardView(LoginRequiredMixin, ListView):
     template_name = "dashboard/home.html"
     queryset=Student.objects.all()
     context_object_name = "students"
@@ -66,7 +67,7 @@ class DashboardView(ListView):
         return context
     
 
-class AddStudentView(FormView):
+class AddStudentView(LoginRequiredMixin, FormView):
     template_name = "forms/forms.html"
     form_class = StudentForm
     success_url = reverse_lazy("home:add_student")
@@ -83,7 +84,7 @@ class AddStudentView(FormView):
         print("Form is invalid", form.errors)
         return super().form_invalid(form)     
 
-class NewStaffAddView(FormView):
+class NewStaffAddView(LoginRequiredMixin, FormView):
     template_name = "forms/newstaff.html"
     form_class = SignUpForm
     success_url = reverse_lazy("home:dashboard")
@@ -151,7 +152,7 @@ class NewStaffAddView(FormView):
         
 
   
-class NewLibrarianAddView(FormView):
+class NewLibrarianAddView(LoginRequiredMixin ,FormView):
     template_name = "forms/newlibrarian.html"
     form_class = SignUpForm
 

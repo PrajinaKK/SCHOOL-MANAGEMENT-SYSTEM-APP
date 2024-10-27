@@ -5,10 +5,12 @@ from . forms import BookForm
 from django.urls import reverse_lazy
 from .models import Books
 from django.core.exceptions import PermissionDenied
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 # Create your views here.
 
-class BookFormView(FormView):
+class BookFormView(LoginRequiredMixin, FormView):
     template_name="addBooks.html"
     form_class = BookForm
     success_url = reverse_lazy("home:dashboard")# change it to book list later
@@ -27,13 +29,13 @@ class BookFormView(FormView):
         print("Form is invalid", form.errors)
         return super().form_invalid(form)       
 
-class BookListView(ListView):
+class BookListView(LoginRequiredMixin,ListView):
     template_name= "book-list.html"    
     queryset = Books.objects.all()
     context_object_name = "books"
     
 
-class BookUpdateView(UpdateView):
+class BookUpdateView(LoginRequiredMixin, UpdateView):
     template_name = "updateBooks.html"
     form_class=BookForm
     # context_object_name="form"
@@ -42,7 +44,7 @@ class BookUpdateView(UpdateView):
     slug_url_kwarg= 'slug'
     success_url = reverse_lazy("home:dashboard")
 
-class BookDeleteView(DeleteView):
+class BookDeleteView(LoginRequiredMixin, DeleteView):
     model = Books
     
     success_url = reverse_lazy('library:book-list')

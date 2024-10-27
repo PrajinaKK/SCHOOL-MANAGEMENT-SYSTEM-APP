@@ -4,14 +4,16 @@ from accounts.models import User
 from accounts.forms import UserForm
 from django.urls import reverse_lazy
 from django.core.exceptions import PermissionDenied
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 # Create your views here.
 
-class StaffListView(ListView):
+class StaffListView(LoginRequiredMixin,ListView):
     template_name = "staff/staff-list.html"
     queryset=User.objects.all()
     context_object_name = "staffs"
 
-class StaffUpdateView(UpdateView):
+class StaffUpdateView(LoginRequiredMixin,UpdateView):
     template_name = "staff/updateStaff.html"
     form_class=UserForm
     # context_object_name="form"
@@ -20,7 +22,7 @@ class StaffUpdateView(UpdateView):
     slug_url_kwarg= 'slug'
     success_url = reverse_lazy("home:dashboard")    
 
-class DeleteStaffView(DeleteView):
+class DeleteStaffView(LoginRequiredMixin,DeleteView):
     model = User
     
     success_url = reverse_lazy('home:dashboard')
